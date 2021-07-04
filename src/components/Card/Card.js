@@ -19,6 +19,7 @@ export default class Card extends React.Component {
         <p>Titulo: {this.props.titulos} €</p>
         <p>Autor: {this.props.autor} </p>
         <p>{this.props.contenido} </p>
+   {/*      <img src={this.props.cover} alt="image"></img> */}
         <p>Imagen: {this.props.cover} </p>
         <button onClick={this.props.remove}>Borrar</button>
       </section>

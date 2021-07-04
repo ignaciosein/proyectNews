@@ -14,7 +14,14 @@ export default class ListNews extends Component {
   componentDidMount() {
     let arrayVacio = [];
 
+     
+
+
     let recoveredData = localStorage.getItem("noticias");
+
+  
+    console.log(recoveredData);
+ 
 
     alert("LIST NEWS");
 
@@ -201,25 +208,40 @@ export default class ListNews extends Component {
       />
     ));
 
-  removeAllNews = () => this.setState({ newsApi: [] });
+  removeAllNews = () => {this.setState({ newsApi: [] })
+  
+  
+  
+  localStorage.removeItem("noticias");
+  
+  
+  
+    };
 
   removeOneNews = (i) => {
-    var datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
+    let datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
+
+   
+  
 
     if (datosLocalStorage) {
-      let array = datosLocalStorage.splice(0, i);
+ 
+ 
 
-      console.log(array);
-      localStorage.setItem("noticias", JSON.stringify(array));
 
-      var datosLocalStorage2 = JSON.parse(localStorage.getItem("noticias"));
+      let filteredArray2 = datosLocalStorage.filter((item, j) => i !== j)
 
-      if (datosLocalStorage2.length ===0) {
-        alert("quiere borrar")
+      console.log(filteredArray2);
 
-        localStorage.removeItem("noticias");
-      }
-    } else {
+      localStorage.setItem("noticias", JSON.stringify(filteredArray2));
+
+  
+      
+    } 
+    
+    
+    
+    else {
     }
 
     let filteredArray = this.state.newsApi.filter((item, j) => i !== j);
@@ -227,16 +249,7 @@ export default class ListNews extends Component {
     this.setState({ newsApi: filteredArray });
   };
 
-  meterDatos = () => {
-    /* 
-    let datos = this.props.titulo
-
-    console.log(datos) */
-
-    /*  */
-
-    console.log(this.state.prueba);
-  };
+   
 
   render() {
     /*  {this.meterDatos((this.props.titulo))} */
@@ -248,7 +261,7 @@ export default class ListNews extends Component {
         <button onClick={this.removeAllNews}>Borrar Todas las noticias</button>
 
         <div className="container">{this.renderNews()}</div>
-        {this.meterDatos()}
+   
       </article>
     );
   }
