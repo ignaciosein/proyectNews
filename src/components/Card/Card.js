@@ -12,15 +12,15 @@ export default class Card extends React.Component {
   }
 
   render() {
-    /*  let {name,price,empresa} = this.props.data; */
-    console.log(this.props.titulos);
+ 
+ 
     return (
       <section>
         <p>Titulo: {this.props.titulos} €</p>
         <p>Autor: {this.props.autor} </p>
         <p>{this.props.contenido} </p>
-   {/*      <img src={this.props.cover} alt="image"></img> */}
-        <p>Imagen: {this.props.cover} </p>
+       <img src={this.props.cover} alt="image"></img>  
+  
         <button onClick={this.props.remove}>Borrar</button>
       </section>
     );

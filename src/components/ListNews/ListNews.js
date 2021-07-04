@@ -13,159 +13,54 @@ export default class ListNews extends Component {
 
   componentDidMount() {
     let arrayVacio = [];
-
-     
-
-
     let recoveredData = localStorage.getItem("noticias");
+ 
 
+    if (this.props.titulo) {
+   
+      let newsUser = [
+        {
+          title: this.props.titulo.title,
+          author: this.props.titulo.author,
+          content: this.props.titulo.content,
+          cover: this.props.titulo.cover,
+        },
+      ];
+ 
+      if (recoveredData === null) {
+         localStorage.setItem("noticias", JSON.stringify(newsUser));
+
+        let newsUser44 = {
+          title: this.props.titulo.title,
+          author: this.props.titulo.author,
+          content: this.props.titulo.content,
+          cover: this.props.titulo.cover,
+        };
+
+        arrayVacio.push(newsUser44);
   
-    console.log(recoveredData);
- 
+      } else if (recoveredData !== null) {
+        let data = JSON.parse(recoveredData);
+        let newsUser44 = {
+          title: this.props.titulo.title,
+          author: this.props.titulo.author,
+          content: this.props.titulo.content,
+          cover: this.props.titulo.cover,
+        };
+        data.push(newsUser44);
+         localStorage.setItem("noticias", JSON.stringify(data));
 
-    alert("LIST NEWS");
-
-                  if (this.props.titulo) {
-                    //VIENEN DATOS DEL FORMULARIO POR LO TANTO SE VAN A METER
-                    alert("se van a meter datos");
-
-                    /*   console.log(this.props.titulo); */
-
-                    // CREO OBJETO CON LO QUE VIENE DEL FORM
-                    let newsUser = [
-                      {
-                        title: this.props.titulo.title,
-                        author: this.props.titulo.author,
-                        content: this.props.titulo.content,
-                        cover: this.props.titulo.cover,
-                      },
-                    ];
-
-                    console.log(recoveredData);
-                    /* arrayVacio.push(newsUser)   */
-
-                    //------COMPROBANDO LOCALSTORAGE----------//
-
-                    if (recoveredData === null) {
-
-                      console.log(newsUser)
-                      alert("NO HAY DATOS EN LOCALSTORAGE")
-                      //SI NO EXISTEN DATOS EN LOCALSTORAGE LOS INTRODUZCO, EN ESTE CASO EL OBJETO NEWUSER
-                      localStorage.setItem("noticias", JSON.stringify(newsUser));
-
-                      let newsUser44 = 
-                        {
-                          title: this.props.titulo.title,
-                          author: this.props.titulo.author,
-                          content: this.props.titulo.content,
-                          cover: this.props.titulo.cover,
-                        }
-                      
-
-
-
-
-                      arrayVacio.push(newsUser44);
-
-                      console.log(arrayVacio)
-
-                      /*   console.log(recoveredData2) */
-                    } else if (recoveredData !== null) {
-
-                      alert("SII HAY DATOS EN LOCALSTORAGE")
-                      let data = JSON.parse(recoveredData);
-
-                      console.log(data);
-                      
-                      let newsUser44 = 
-                        {
-                          title: this.props.titulo.title,
-                          author: this.props.titulo.author,
-                          content: this.props.titulo.content,
-                          cover: this.props.titulo.cover,
-                        }
-
-                        data.push(newsUser44);
-
-                        console.log(data);
-
-                        localStorage.setItem("noticias", JSON.stringify(data))
-
-                        for (let index = 0; index < data.length; index++) {
-
-                          console.log()
-
-
-                          let meterArray = data[index]
-
-                          console.log(meterArray);
-                          
-
-
-                   
-                              arrayVacio.push(meterArray)
-
-                   
-                          
-                        }
-
-
- /* 
- 
-                     
-
-
-
-                      //SI EXISTEN DATOS EN LOCALSTORAGE Y QUIERO METER UN NUEVO OBJETO, EN ESTE CASO NEWUSER2
-                    
- 
-                      //OBTENGO LO QUE TIENE LOCALSTORAGE
-
-                      //PREPARO EL OBJETO QUE VOY A METER EN LOCALSTORAGE
-                      let newsUser4 = {
-                        title: this.props.titulo.title,
-                        author: this.props.titulo.author,
-                        content: this.props.titulo.content,
-                        cover: this.props.titulo.cover,
-                      };
-
-                 
-                      
-                      //PUSHEO LOS DATOSA EL ARRAY DATA QUE CONTENDRÁ EL OBJETO QUE QUIERO METER EN LOCALSTORAFGE
-                   
-
-                  
-                      
-                      // METIENDO OBJETO  DATA EN LOCALSTORAGE
-                      localStorage.setItem("noticias", JSON.stringify(data));
-
-                      // AHORA LEO TODO LO QUE TIENE LOCALSTORAGE Y LO PUSHEO A ARRAY VACIO QUE METERÁ LOS DATOS EN EL STATE
-                     
-                      console.log(arrayVacio);
-                    
-
-                      *//*  arrayVacio.push(data); */
-                    }
-    } else {
-      /// SI NO LLEGA NINGUN DATO DEL FORMULARIO , SOLO COMPRUEBO SI EXISTEN DATOS EN LOCALSTORAGE PARA
-      //PINTARLOS
-
-      alert("no hay nada que meter");
-      /* 
-                          console.log(this.props.titulo); */
-      //LEO LO QUE TIENE LOCALSTORAGE
-      var datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
-
-      console.log(datosLocalStorage);
-
-      //SI LOCALSTORAGE  TIENE DATOS LOS SACO
+        for (let index = 0; index < data.length; index++) {
+          let meterArray = data[index];
+          arrayVacio.push(meterArray);
+        }
+      }
+    } else {    
+      let datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
       if (datosLocalStorage !== null) {
-        alert("SACANDO DATOS DE LOCALSTORAGE");
-
         for (let index = 0; index < datosLocalStorage.length; index++) {
           let dataLocalStorage = datosLocalStorage[index];
-          //PUSHEO LOS DATOS DE LOCALSTORAGE A EL ARRAY VACIO PARA QUE PINTE STATE
-          arrayVacio.push(dataLocalStorage);
+               arrayVacio.push(dataLocalStorage);
         }
       }
     }
@@ -176,23 +71,16 @@ export default class ListNews extends Component {
       )
       .then((res) => {
         const newsApi = res.data.articles.slice(0, 5);
-
-        /* arrayVacio.push(this.props.datos) */
-
         for (let index = 0; index < newsApi.length; index++) {
-          console.log(newsApi[index].title);
-
-          arrayVacio.push({
+           arrayVacio.push({
             title: newsApi[index].title,
             author: newsApi[index].author,
             content: newsApi[index].content,
             cover: newsApi[index].urlToImage,
           });
         }
-
         this.setState({ newsApi: arrayVacio });
 
-        console.log(this.state.newsApi);
       });
   }
 
@@ -208,40 +96,20 @@ export default class ListNews extends Component {
       />
     ));
 
-  removeAllNews = () => {this.setState({ newsApi: [] })
-  
-  
-  
-  localStorage.removeItem("noticias");
-  
-  
-  
-    };
+  removeAllNews = () => {
+    this.setState({ newsApi: [] });
+
+    localStorage.removeItem("noticias");
+  };
 
   removeOneNews = (i) => {
     let datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
 
-   
-  
-
     if (datosLocalStorage) {
+      let filteredArray2 = datosLocalStorage.filter((item, j) => i !== j);
  
- 
-
-
-      let filteredArray2 = datosLocalStorage.filter((item, j) => i !== j)
-
-      console.log(filteredArray2);
-
       localStorage.setItem("noticias", JSON.stringify(filteredArray2));
-
-  
-      
-    } 
-    
-    
-    
-    else {
+    } else {
     }
 
     let filteredArray = this.state.newsApi.filter((item, j) => i !== j);
@@ -249,10 +117,7 @@ export default class ListNews extends Component {
     this.setState({ newsApi: filteredArray });
   };
 
-   
-
-  render() {
-    /*  {this.meterDatos((this.props.titulo))} */
+  render() { 
 
     return (
       <article>
@@ -261,7 +126,6 @@ export default class ListNews extends Component {
         <button onClick={this.removeAllNews}>Borrar Todas las noticias</button>
 
         <div className="container">{this.renderNews()}</div>
-   
       </article>
     );
   }
