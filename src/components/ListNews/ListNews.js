@@ -8,16 +8,48 @@ export default class ListNews extends Component {
     super(props);
     this.state = {
       newsApi: [],
+ 
     };
   }
-  
+
   componentDidMount() {
+
     let arrayVacio = [];
+
+    alert("LIST NEWS");
 
     
 
-    alert("se carga listnews")
-  
+    if(this.props.titulo){
+
+      alert("se van a meter datos")
+      console.log(this.props.titulo)
+
+
+      let newsUser = {
+
+        title: this.props.titulo.title,
+        author: this.props.titulo.author,
+        content: this.props.titulo.content,
+        cover: this.props.titulo.cover
+      }
+
+      arrayVacio.push(newsUser)
+
+
+
+
+    }
+    else{
+
+      alert("no hay nada que meter")
+      console.log(this.props.titulo)
+    }
+
+
+
+ 
+
     axios
       .get(
         `https://newsapi.org/v2/everything?q=keyword&apiKey=d61243b5ebee40f18b80f711522726ba`
@@ -25,7 +57,7 @@ export default class ListNews extends Component {
       .then((res) => {
         const newsApi = res.data.articles.slice(0, 5);
 
-       
+        
 
         /* arrayVacio.push(this.props.datos) */
 
@@ -38,20 +70,17 @@ export default class ListNews extends Component {
             content: newsApi[index].content,
             cover: newsApi[index].urlToImage,
           });
-          
         }
-        
-  
-
-       
 
         this.setState({ newsApi: arrayVacio });
 
         console.log(this.state.newsApi);
-
-     
-   
       });
+
+ 
+   
+
+
   }
 
   renderNews = () =>
@@ -74,32 +103,28 @@ export default class ListNews extends Component {
     this.setState({ newsApi: filteredArray });
   };
 
+  meterDatos = () => {
+    /* 
+    let datos = this.props.titulo
 
-/*   meterDatos = (mail) => this.setState({newsApi: {...this.state.newsApi, mail}}); */
- 
+    console.log(datos) */
+
+    /*  */
+
+    console.log(this.state.prueba);
+  };
 
   render() {
-
-   
-    console.log(this.props.titulo)
-   /*  {this.meterDatos((this.props.titulo))} */
-   
+    /*  {this.meterDatos((this.props.titulo))} */
 
     return (
-      
       <article>
         <h2>Noticias</h2>
-        <section>
-        <p>Titulo: {this.props.titulo.title} €</p>
-        <p>Autor: {this.props.titulo.author} </p>
-        <p>{this.props.titulo.content} </p>
-        <button onClick={this.removeOneNews}>Borrar</button>
-      </section>
 
         <button onClick={this.removeAllNews}>Borrar Todas las noticias</button>
 
-        
         <div className="container">{this.renderNews()}</div>
+        {this.meterDatos()}
       </article>
     );
   }

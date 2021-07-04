@@ -84,17 +84,9 @@ class List extends Component {
 
   render() {
     
-    
+    const {data} =this.props.location;
 
-     
-    console.log(this.state.datos)
-    
- 
-
-    
-
-
-       return (
+        return (
 
         <div>
       <h1>PAGINA LIST</h1> 
@@ -109,7 +101,7 @@ class List extends Component {
          <p>COVER:  {this.state.datos.cover} </p>   */}  
 
 
-<ListNews   titulo={this.state.datos} />
+<ListNews   titulo={data} />
 
 
 
