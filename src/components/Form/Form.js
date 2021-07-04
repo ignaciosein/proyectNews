@@ -57,19 +57,19 @@ class Form extends Component {
         <form>
         <label>Titulo</label>
         <br></br>
-        <input type="text" name="nombre" required onChange={this.titleNews} />
+        <input type="text" name="nombre"  onChange={this.titleNews} />
         <br></br>
         <label>Autor</label>
         <br></br>
-        <input type="text" name="nombre" required onChange={this.authorNews} />
+        <input type="text" name="nombre"  onChange={this.authorNews} />
         <br></br>
         <label>Contenido</label>
         <br></br>
-        <input type="text" name="nombre" required onChange={this.contentNews} />
+        <input type="text" name="nombre"  onChange={this.contentNews} />
         <br></br>
         <label>Imagen</label>
         <br></br>
-        <input type="text" name="nombre" required onChange={this.coverNews} />
+        <input type="text" name="nombre"  onChange={this.coverNews} />
         <br></br>
         <button>
          
