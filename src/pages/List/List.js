@@ -14,56 +14,6 @@ class List extends Component {
 
   
 
-/* 
-  renderProducts = () =>
-  this.state.products.map((product, i) => (
-    <Product data={product} key={i} remove={() => this.removeOneProduct(i)} />
-  ));
- */
-
-/*   recogerDato = () => { */
-
-
-/*     const {data} =this.props.location; */
-
-  
-/* this.setState({datos : data}) */
- 
-   /*  this.setState(data); */
-    /* this.setState({ datos: [...this.state.datos, data] });  */
-
-
-/* 
-    console.log(this.state) */
-
-/*   } */
-
-/*   componentDidUpdate(prevProps, prevState) {
-    if (this.state !== prevState) {
- 
-    }
-  } */
-
-
- 
-
- /*  renderNews = () =>
-   {
-    for (let index = 0; index < this.state.data.length; index++) {
-    
-        console.log( this.state.data[index])
-
- 
-
-    }
-
-
-
-
-
-
-   } */
-
    componentDidMount() {
 
     alert("se monta")
@@ -72,10 +22,7 @@ class List extends Component {
 
     this.setState({datos: data})
 
-    
-
-/*      */
-
+ 
     
 
 
