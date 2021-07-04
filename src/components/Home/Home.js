@@ -1,83 +1,52 @@
-import React, { Component } from 'react';
-import './Home.css';
- 
-import { userContext } from "../../context/userContext"
+import React, { Component } from "react";
+import "./Home.css";
+
+import { userContext } from "../../context/userContext";
 class Home extends Component {
-   constructor(props){
-     super(props);
-      this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+    };
+  }
 
-        name: "",
-      };
-   }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Cambio hecho!");
+  }
 
+  handleChange = (event) => {
+    this.setState({ name: event.target.value });
+  };
   handleSubmit = async (event) => {
     event.preventDefault();
 
-    let name = event.target.nombre.value;
-    
-    console.log(name)
-
-    this.setState({ name: name });
-
-
-     
-    
-  };
- 
-  /* componentDidUpdate(prevProps, prevState) {
- 
- 
-  if(this.state !== prevState){
-
-
-    console.log(("funciona"));
-
-
-    
-  } */
- /*  componentDidUpdate(prevProps, prevState) {
-
-    
-      
-      return loginUser(this.state);
-  
-
-    }
-   
-    } */
- 
+    const user = {
+      name: this.state.name,
+    };
+  }
 
   render() {
-    
-  const value = {
-    name: this.state.name  
-         };
+    const value = {
+      name: this.state.name,
+    };
     return (
-
-
       <div>
-
- 
-        
-        <h3>Este es el componentess home</h3>
-         <form onSubmit={this.handleSubmit}>
-        <input type="text" name="nombre" placeholder="Introduce nombre"></input>     
-
-       
-
-      <userContext.Consumer>
-        {({loginUser}) => 
-          <button type="submit" onClick={()=>loginUser(this.state.name)}>Add</button>
-        }
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          introduzca nombre de usuario:
+          <input type="text" name="name" onChange={this.handleChange} />
+        </label>
+        <userContext.Consumer>
+          {({ loginUser }) => (
+            <button type="submit" onClick={() => loginUser(this.state.name)}>
+              Add
+            </button>
+          )}
         </userContext.Consumer>
-        
       </form>
 
-      <p>Usuario introducido: {this.state.name ||"--"}</p>
-        
-        
-        </div>
+      
+      </div>
     );
   }
 }

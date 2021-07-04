@@ -9,18 +9,18 @@ class Head extends Component {
  
     return (
       <div><h1>Este es el Header probando</h1>
-        <Nav/>
+         <Nav/>
 
-        <userContext.Consumer>
-            {({user}) => {
-    return console.log(user),
-                <>
-                  <p>Usuario: {  }</p>
-         
-                </>
-            }
-          }
-            </userContext.Consumer>
+
+<userContext.Consumer>
+{({user,logoutUser}) => 
+    <>
+      <p>User: {user.name}</p>
+      <button onClick={logoutUser}>Logout</button>
+    </>
+}
+</userContext.Consumer>
+
 
       </div>
     );
