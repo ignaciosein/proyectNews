@@ -16,76 +16,136 @@ export default class ListNews extends Component {
 
     let recoveredData = localStorage.getItem("noticias");
 
-    console.log(recoveredData)
-
-
-
-
-
-
-
-
     alert("LIST NEWS");
 
-    if (this.props.titulo) {
-      //VIENEN DATOS DEL FORMULARIO POR LO TANTO SE VAN A METER
-      alert("se van a meter datos");
-      /*   console.log(this.props.titulo); */
+                  if (this.props.titulo) {
+                    //VIENEN DATOS DEL FORMULARIO POR LO TANTO SE VAN A METER
+                    alert("se van a meter datos");
 
-      // CREO OBJETO CON LO QUE VIENE DEL FORM
-      let newsUser = [
-        {
-          title: this.props.titulo.title,
-          author: this.props.titulo.author,
-          content: this.props.titulo.content,
-          cover: this.props.titulo.cover,
-        },
-      ];
+                    /*   console.log(this.props.titulo); */
 
-      /* arrayVacio.push(newsUser)   */
+                    // CREO OBJETO CON LO QUE VIENE DEL FORM
+                    let newsUser = [
+                      {
+                        title: this.props.titulo.title,
+                        author: this.props.titulo.author,
+                        content: this.props.titulo.content,
+                        cover: this.props.titulo.cover,
+                      },
+                    ];
 
-      //------COMPROBANDO LOCALSTORAGE----------//
-      let recoveredData = localStorage.getItem("noticias");
+                    console.log(recoveredData);
+                    /* arrayVacio.push(newsUser)   */
 
-      if (recoveredData == null) {
-        //SI NO EXISTEN DATOS EN LOCALSTORAGE LOS INTRODUZCO, EN ESTE CASO EL OBJETO NEWUSER
-        localStorage.setItem("noticias", JSON.stringify(newsUser));
+                    //------COMPROBANDO LOCALSTORAGE----------//
 
-        let recoveredData2 = localStorage.getItem("noticias");
+                    if (recoveredData === null) {
 
-        /*   console.log(recoveredData2) */
-      } else {
-        //SI EXISTEN DATOS EN LOCALSTORAGE Y QUIERO METER UN NUEVO OBJETO, EN ESTE CASO NEWUSER2
-        let data = JSON.parse(recoveredData);
-        //OBTENGO LO QUE TIENE LOCALSTORAGE
+                      console.log(newsUser)
+                      alert("NO HAY DATOS EN LOCALSTORAGE")
+                      //SI NO EXISTEN DATOS EN LOCALSTORAGE LOS INTRODUZCO, EN ESTE CASO EL OBJETO NEWUSER
+                      localStorage.setItem("noticias", JSON.stringify(newsUser));
 
-        //PREPARO EL OBJETO QUE VOY A METER EN LOCALSTORAGE
-        let newsUser2 = {
-          title: this.props.titulo.title,
-          author: this.props.titulo.author,
-          content: this.props.titulo.content,
-          cover: this.props.titulo.cover,
-        };
+                      let newsUser44 = 
+                        {
+                          title: this.props.titulo.title,
+                          author: this.props.titulo.author,
+                          content: this.props.titulo.content,
+                          cover: this.props.titulo.cover,
+                        }
+                      
 
-        //PUSHEO LOS DATOSA EL ARRAY DATA QUE CONTENDRÁ EL OBJETO QUE QUIERO METER EN LOCALSTORAFGE
-        data.push(newsUser2);
 
-        // METIENDO OBJETO  DATA EN LOCALSTORAGE
-        localStorage.setItem("noticias", JSON.stringify(data));
 
-        // AHORA LEO TODO LO QUE TIENE LOCALSTORAGE Y LO PUSHEO A ARRAY VACIO QUE METERÁ LOS DATOS EN EL STATE
-        var piloto = JSON.parse(localStorage.getItem("noticias"));
-        console.log(piloto);
 
-        arrayVacio.push(piloto);
-      }
+                      arrayVacio.push(newsUser44);
+
+                      console.log(arrayVacio)
+
+                      /*   console.log(recoveredData2) */
+                    } else if (recoveredData !== null) {
+
+                      alert("SII HAY DATOS EN LOCALSTORAGE")
+                      let data = JSON.parse(recoveredData);
+
+                      console.log(data);
+                      
+                      let newsUser44 = 
+                        {
+                          title: this.props.titulo.title,
+                          author: this.props.titulo.author,
+                          content: this.props.titulo.content,
+                          cover: this.props.titulo.cover,
+                        }
+
+                        data.push(newsUser44);
+
+                        console.log(data);
+
+                        localStorage.setItem("noticias", JSON.stringify(data))
+
+                        for (let index = 0; index < data.length; index++) {
+
+                          console.log()
+
+
+                          let meterArray = data[index]
+
+                          console.log(meterArray);
+                          
+
+
+                   
+                              arrayVacio.push(meterArray)
+
+                   
+                          
+                        }
+
+
+ /* 
+ 
+                     
+
+
+
+                      //SI EXISTEN DATOS EN LOCALSTORAGE Y QUIERO METER UN NUEVO OBJETO, EN ESTE CASO NEWUSER2
+                    
+ 
+                      //OBTENGO LO QUE TIENE LOCALSTORAGE
+
+                      //PREPARO EL OBJETO QUE VOY A METER EN LOCALSTORAGE
+                      let newsUser4 = {
+                        title: this.props.titulo.title,
+                        author: this.props.titulo.author,
+                        content: this.props.titulo.content,
+                        cover: this.props.titulo.cover,
+                      };
+
+                 
+                      
+                      //PUSHEO LOS DATOSA EL ARRAY DATA QUE CONTENDRÁ EL OBJETO QUE QUIERO METER EN LOCALSTORAFGE
+                   
+
+                  
+                      
+                      // METIENDO OBJETO  DATA EN LOCALSTORAGE
+                      localStorage.setItem("noticias", JSON.stringify(data));
+
+                      // AHORA LEO TODO LO QUE TIENE LOCALSTORAGE Y LO PUSHEO A ARRAY VACIO QUE METERÁ LOS DATOS EN EL STATE
+                     
+                      console.log(arrayVacio);
+                    
+
+                      *//*  arrayVacio.push(data); */
+                    }
     } else {
       /// SI NO LLEGA NINGUN DATO DEL FORMULARIO , SOLO COMPRUEBO SI EXISTEN DATOS EN LOCALSTORAGE PARA
       //PINTARLOS
 
       alert("no hay nada que meter");
       /* 
-      console.log(this.props.titulo); */
+                          console.log(this.props.titulo); */
       //LEO LO QUE TIENE LOCALSTORAGE
       var datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
 
@@ -144,42 +204,27 @@ export default class ListNews extends Component {
   removeAllNews = () => this.setState({ newsApi: [] });
 
   removeOneNews = (i) => {
-      var datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
+    var datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
 
-      if(datosLocalStorage){
-
-     
- 
+    if (datosLocalStorage) {
       let array = datosLocalStorage.splice(0, i);
 
       console.log(array);
       localStorage.setItem("noticias", JSON.stringify(array));
 
       var datosLocalStorage2 = JSON.parse(localStorage.getItem("noticias"));
- 
-      if(datosLocalStorage2.length ==0){
 
+      if (datosLocalStorage2.length ===0) {
+        alert("quiere borrar")
 
-        localStorage.removeItem('noticias')
-
+        localStorage.removeItem("noticias");
       }
-    }
-    else{
-
-     
-
+    } else {
     }
 
-     let filteredArray = this.state.newsApi.filter((item, j) => i !== j);
- 
-      this.setState({ newsApi: filteredArray });
+    let filteredArray = this.state.newsApi.filter((item, j) => i !== j);
 
-    
-
-   
-
- 
- 
+    this.setState({ newsApi: filteredArray });
   };
 
   meterDatos = () => {
