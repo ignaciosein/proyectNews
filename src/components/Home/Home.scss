@@ -1,7 +1,9 @@
  
 @import "../../Sass/mixins";
 @import "../../Sass/_animations";
+ 
 .Home {
+  @include slide-down();
   width: 100%;
   margin: 0px;
   @include flex-column-center();
@@ -15,9 +17,11 @@
     @include flex-column-center();
  
   }
+ 
 
 
 
      @keyframes slide-bottom{0%{transform:translateY(-100px)}100%{transform:translateY(0px)}}
+     
     /* propertys here */
 }
