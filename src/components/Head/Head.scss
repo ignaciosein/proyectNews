@@ -3,32 +3,66 @@
 @import "../../Sass/_animations";
 
 .Head {
-  > p {
-    margin-left: 5%;
-    color: white;
-  }
-  > img {
-    padding-left: 20px;
-    padding-bottom: 20px;
-    width: 15%;
-  }
-  > img.loginAvatar {
-    @include slide-right();
-  }
-  > p {
-    @include slide-right();
-  }
-  @include flex-row();
-  > button {
-    @include slide-right();
-    margin-left: 20px;
-    margin-top: 10px;
-    height: 30px;
-    background-color: red;
+  .container {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-wrap: nowrap;
   }
 
-  margin-top: 0;
-  background-color: $color-header;
+  .divLogin {
+    display: flex;
+    width: 50%;
+    color: white;
+    background-color: black;
+    align-items: center;
+    justify-content: space-evenly;
+    > button {
+      @include slide-right();
+      background: #f31212;
+    }
+    > img {
+      @include slide-right();
+      width: 20%;
+    }
+    
+  }
+  .userName {
+    @include slide-right();
+  }
+  .unlogged{
+
+    @include push();
+
+  }
+
+  .divMenu {
+    background-color: black;
+    width: 50%;
+  }
+
+  #listado {
+    @include slide-bottom();
+    display: none;
+    height: 200px;
+    background-color: black;
+
+  }
+
+  .Nav__list {
+    list-style-type: none;
+    padding: 0px;
+    margin-top: 0px;
+    padding-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    > li {
+      text-decoration: none;
+
+      font-size: 1.3rem;
+    }
+  }
 
   @keyframes slide-right {
     0% {
@@ -38,6 +72,5 @@
       transform: translateX(0px);
     }
   }
-
- 
-}
+  @keyframes rotate-center{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}}
+  @keyframes slide-bottom{0%{transform:translateY(0)}100%{transform:translateY(100px)}}

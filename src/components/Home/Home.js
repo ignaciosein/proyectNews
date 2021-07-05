@@ -33,6 +33,7 @@ class Home extends Component {
       <div className="Home">
       <form onSubmit={this.handleSubmit}>
         <label>Inicie sesión:
+          <br></br>
           <input type="text" onfocus="this.value=''" name="login" onChange={this.handleChange} />
         </label>
         <br></br>

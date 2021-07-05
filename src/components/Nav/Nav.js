@@ -1,25 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Nav.scss";
 
-function Nav() {
+import React, { Component } from "react";
+ 
+import "./Nav.scss";
+import menuBurgerOpen from "../../img/menuBurger.png"
+import menuBurgerClose from "../../img/menuBurgerClose.png"
+
+
+class Nav extends Component {
+ 
+render() {
   return (
     <nav className="Nav">
-      <ul className="Nav__list">
-        <li className="Nav__listItem">
-          <Link className="Nav__link" to="/">
-            Inicio
-          </Link>
-        </li>
-        <li>
-          <Link to="/form"> Crear Noticia </Link>
-        </li>
-        <li>
-          <Link to="/list"> Noticias </Link>
-        </li>
-      </ul>
+      <div>
+      <img id="open" className="menuBurger" onClick={this.props.mostrar} src={menuBurgerOpen}></img>
+      <img id="close" className="menuBurger2"  onClick={this.props.ocultar} src={menuBurgerClose}></img>
+
+      </div>
+
+      <div className="List">
+        
+      
+
+
+
+
+
+      </div>
+  
+   
+    
     </nav>
+   
+    
   );
 }
 
+}
 export default Nav;

@@ -2,13 +2,15 @@
 @import "../../Sass/mixins";
 @import "../../Sass/_animations";
 .Home {
-    align-items: center;
-    @include slide-down();
- 
-  >form{
-
-    padding: 20%;
-  }
+  width: 100%;
+  margin: 0px;
+  @include flex-column-center();
+    padding-top: 20%;
+ /*    padding: 20px; */
+    padding-bottom: 40%;
+    /* propertys here */
+   
+   
   > button{
     @include flex-column-center();
  
