@@ -1,0 +1,22 @@
+@import "../../Sass/mixins";
+@import "../../Sass/_animations";
+
+ 
+.Form {
+    @include slide-down();
+ 
+    >label {
+      
+    }
+   
+    @include flex-column-center();
+    padding-top: 20%;
+ /*    padding: 20px; */
+    padding-bottom: 40%;
+    /* propertys here */
+
+    @keyframes slide-bottom{
+        20%{transform:translateY(-200px)}
+        100%{transform:translateY(0px)}}
+ 
+}

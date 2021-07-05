@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ListNews.css";
+import "./ListNews.scss";
 import Card from "../Card/Card";
 import axios from "axios";
 
@@ -10,47 +10,77 @@ export default class ListNews extends Component {
       newsApi: [],
     };
   }
-  
+
   componentDidMount() {
     let arrayVacio = [];
+    let recoveredData = localStorage.getItem("noticias");
+ 
 
-    
+    if (this.props.titulo) {
+   
+      let newsUser = [
+        {
+          title: this.props.titulo.title,
+          author: this.props.titulo.author,
+          content: this.props.titulo.content,
+          cover: this.props.titulo.cover,
+        },
+      ];
+ 
+      if (recoveredData === null) {
+         localStorage.setItem("noticias", JSON.stringify(newsUser));
 
-    alert("se carga listnews")
+        let newsUser44 = {
+          title: this.props.titulo.title,
+          author: this.props.titulo.author,
+          content: this.props.titulo.content,
+          cover: this.props.titulo.cover,
+        };
+
+        arrayVacio.push(newsUser44);
   
+      } else if (recoveredData !== null) {
+        let data = JSON.parse(recoveredData);
+        let newsUser44 = {
+          title: this.props.titulo.title,
+          author: this.props.titulo.author,
+          content: this.props.titulo.content,
+          cover: this.props.titulo.cover,
+        };
+        data.push(newsUser44);
+         localStorage.setItem("noticias", JSON.stringify(data));
+
+        for (let index = 0; index < data.length; index++) {
+          let meterArray = data[index];
+          arrayVacio.push(meterArray);
+        }
+      }
+    } else {    
+      let datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
+      if (datosLocalStorage !== null) {
+        for (let index = 0; index < datosLocalStorage.length; index++) {
+          let dataLocalStorage = datosLocalStorage[index];
+               arrayVacio.push(dataLocalStorage);
+        }
+      }
+    }
+
     axios
       .get(
         `https://newsapi.org/v2/everything?q=keyword&apiKey=d61243b5ebee40f18b80f711522726ba`
       )
       .then((res) => {
         const newsApi = res.data.articles.slice(0, 5);
-
-       
-
-        /* arrayVacio.push(this.props.datos) */
-
         for (let index = 0; index < newsApi.length; index++) {
-          console.log(newsApi[index].title);
-
-          arrayVacio.push({
+           arrayVacio.push({
             title: newsApi[index].title,
             author: newsApi[index].author,
             content: newsApi[index].content,
             cover: newsApi[index].urlToImage,
           });
-          
         }
-        
-  
-
-       
-
         this.setState({ newsApi: arrayVacio });
 
-        console.log(this.state.newsApi);
-
-     
-   
       });
   }
 
@@ -66,39 +96,35 @@ export default class ListNews extends Component {
       />
     ));
 
-  removeAllNews = () => this.setState({ newsApi: [] });
+  removeAllNews = () => {
+    this.setState({ newsApi: [] });
+
+    localStorage.removeItem("noticias");
+  };
 
   removeOneNews = (i) => {
+    let datosLocalStorage = JSON.parse(localStorage.getItem("noticias"));
+
+    if (datosLocalStorage) {
+      let filteredArray2 = datosLocalStorage.filter((item, j) => i !== j);
+ 
+      localStorage.setItem("noticias", JSON.stringify(filteredArray2));
+    } else {
+    }
+
     let filteredArray = this.state.newsApi.filter((item, j) => i !== j);
-    /*      alert("la noticia se ha borrado") */
+
     this.setState({ newsApi: filteredArray });
   };
 
-
-/*   meterDatos = (mail) => this.setState({newsApi: {...this.state.newsApi, mail}}); */
- 
-
-  render() {
-
-   
-    console.log(this.props.titulo)
-   /*  {this.meterDatos((this.props.titulo))} */
-   
+  render() { 
 
     return (
-      
-      <article>
+      <article className="ListNews">
         <h2>Noticias</h2>
-        <section>
-        <p>Titulo: {this.props.titulo.title} €</p>
-        <p>Autor: {this.props.titulo.author} </p>
-        <p>{this.props.titulo.content} </p>
-        <button onClick={this.removeOneNews}>Borrar</button>
-      </section>
 
         <button onClick={this.removeAllNews}>Borrar Todas las noticias</button>
 
-        
         <div className="container">{this.renderNews()}</div>
       </article>
     );

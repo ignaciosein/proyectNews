@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import './Footer.css';
+import './Footer.scss';
+import ReactLogo from "../../img/react-logo.png"
 
+ 
 class Footer extends Component {
   // constructor(props){
     // super(props);
@@ -18,7 +20,14 @@ class Footer extends Component {
 
   render() {
     return (
-      <div></div>
+      <div className="Footer">
+        <p>made with React</p>
+        <br></br>
+        <img src={ReactLogo}></img>
+        <br></br>
+        <p>By Ignacio G.D</p>
+
+      </div>
     );
   }
 }

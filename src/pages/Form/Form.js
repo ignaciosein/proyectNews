@@ -20,7 +20,7 @@ class Form extends Component {
 
   render() {
     return (
-      <div>PAGINA FORM 
+      <div> 
         
     
         <FormComponent/>

@@ -1,0 +1,136 @@
+@import "../../Sass/colors";
+@import "../../Sass/mixins";
+@import "../../Sass/_animations";
+@import "../../Sass/_querys";
+
+.Head {
+  width: 100%;
+  
+ 
+  .container {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-wrap: nowrap;
+    @include mobile-landscape {
+     
+      height: 80px;
+      
+  
+    }
+    @include tablet-landscape {
+     
+      height: 200px;
+      
+  
+    }
+    @include desktop {
+     
+      height: 100px;
+      
+  
+    }
+    
+  }
+
+  .divLogin {
+    display: flex;
+    width: 50%;
+    color: white;
+    background-color: black;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    > button {
+      @include slide-right();
+      background: #f31212;
+      @include tablet {
+        width: 30%;
+        height: 50px;
+        font-size: 1.5rem;
+
+      }
+     
+    }
+    > img {
+      @include slide-right();
+      width: 20%;
+      @include mobile-landscape {
+     
+        width: 15%
+        
+    
+      }
+    }
+    
+  }
+  .userName {
+    @include slide-right();
+    @include tablet {
+    
+      font-size: 2rem;
+
+    }
+  }
+  .unlogged{
+
+    @include push();
+    @include tablet {
+      font-size: 2rem;
+    }
+
+  }
+
+  .divMenu {
+    background-color: black;
+    width: 50%;
+  }
+
+  #listado {
+    @include slide-bottom();
+    display: none;
+    height: 200px;
+    background-color: black;
+    @include tablet {
+      height: 300px;
+      
+    }
+        
+
+
+  }
+
+  .Nav__list {
+    list-style-type: none;
+    padding: 0px;
+    margin-top: 0px;
+    padding-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    
+    > li {
+      text-decoration: none;
+
+      font-size: 1.3rem;
+      @include tablet {
+        font-size: 2.2rem;
+
+      }
+      @include desktop {
+        font-size: 2.2rem;
+
+      }
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(-100px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  @keyframes rotate-center{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}}
+  @keyframes slide-bottom{0%{transform:translateY(0)}100%{transform:translateY(100px)}}

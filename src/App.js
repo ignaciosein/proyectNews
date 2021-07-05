@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { BrowserRouter} from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import './App.css';
+import './App.scss';
 import Header from "./components/Head/Head";
-import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
+ 
 
-import {userContext} from './context/userContext';
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
+
+import { userContext } from "./context/userContext";
 
 export class App extends Component {
   constructor(props) {
@@ -14,45 +16,32 @@ export class App extends Component {
   
     this.state = {
       user: {
-        name:"Alex"
+        name:""
       }
     }
   }
   
-
-
-
+  logout = () => { 
  
-  login = (name) => {
-   
-
-
-
-    if(this.state.user.name !== name)
-  {
-
-   console.log("el nombre es distinto")
-   this.setState({user: name});  
-
-  }
-  else{
-  console.log("el nombre coincide")
-}
+    alert("Te has desconectado")
+    this.setState({user: {}})
   
-
+  };
+  login = (name) => { 
  
 
-  }
+    console.log(this.state.user.name)
+    this.setState({user:{name}})
   
+  
+  
+  
+  };
 
   render() {
-
-
- 
-  
     const value = {
       user: this.state.user,
-  
+      logoutUser: this.logout,
       loginUser: this.login
     }
 
@@ -60,14 +49,15 @@ export class App extends Component {
       <div className="App">
         <BrowserRouter>
           <userContext.Provider value={value}>
-            <Header/>
-            <Main/>
+            <Header />
+            <Main />
           </userContext.Provider>
+       
         </BrowserRouter>
-        <Footer/>
+        <Footer />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
