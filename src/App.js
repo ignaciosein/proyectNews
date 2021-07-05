@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import "./App.css";
+import './App.scss';
 import Header from "./components/Head/Head";
-import Home from "./components/Home";
+ 
 
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
@@ -21,13 +21,16 @@ export class App extends Component {
     }
   }
   
-  logout = () => { this.setState({user: {}}) };
-  login = (name) => { 
-    
+  logout = () => { 
  
+    alert("Te has desconectado")
+    this.setState({user: {}})
+  
+  };
+  login = (name) => { 
+ 
+
     console.log(this.state.user.name)
-    
-    
     this.setState({user:{name}})
   
   

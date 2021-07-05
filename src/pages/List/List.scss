@@ -1,0 +1,13 @@
+ 
+@import "../../Sass/_animations";
+
+.List {
+    padding-top: 10%;
+    @include slide-down();
+ 
+   
+
+
+     @keyframes slide-bottom{0%{transform:translateY(-100px)}100%{transform:translateY(0px)}}
+    /* propertys here */
+}

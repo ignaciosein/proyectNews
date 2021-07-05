@@ -1,0 +1,76 @@
+@import "./Sass/colors";
+@import "./Sass/mixins";
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&family=Quicksand&display=swap');
+button,
+input[type="submit"] {
+   
+  background: $color-header;
+  
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  &:active {
+   
+    background: $color-primary;
+    color: $color-primary-dark;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+input[type='text'],input[type='email'],input[type='password'], input[type='tlf'], input[type='number']{
+  border: none;
+  border-radius: 12px;
+  
+  
+  padding: 6px;
+  margin: 10px;
+  color: $color-placeholder ;
+  &:focus{
+    outline: none;
+  }
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: $color-bg;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+label{
+  color: $color-type-light;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+body{
+  font-family: 'Lato', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  top: 0 ;
+  background-color: white;
+ 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b6735', endColorstr='#2b3521',GradientType=0 );;
+  
+  color: $color-bg;
+}
+label{
+  text-align: justify;
+  color: white;
+  font-weight: bold;
+ 
+}
+form{
+  
+  text-align: center;
+}

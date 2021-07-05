@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ListNews.css";
+import "./ListNews.scss";
 import Card from "../Card/Card";
 import axios from "axios";
 
@@ -120,7 +120,7 @@ export default class ListNews extends Component {
   render() { 
 
     return (
-      <article>
+      <article className="ListNews">
         <h2>Noticias</h2>
 
         <button onClick={this.removeAllNews}>Borrar Todas las noticias</button>

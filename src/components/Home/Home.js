@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Home.css";
+import "./Home.scss";
 
 import { userContext } from "../../context/userContext";
 class Home extends Component {
@@ -30,16 +30,16 @@ class Home extends Component {
       name: this.state.name,
     };
     return (
-      <div>
+      <div className="Home">
       <form onSubmit={this.handleSubmit}>
-        <label>
-          introduzca nombre de usuario:
-          <input type="text" name="name" onChange={this.handleChange} />
+        <label>Inicie sesión:
+          <input type="text" onfocus="this.value=''" name="login" onChange={this.handleChange} />
         </label>
+        <br></br>
         <userContext.Consumer>
           {({ loginUser }) => (
             <button type="submit" onClick={() => loginUser(this.state.name)}>
-              Add
+              Login
             </button>
           )}
         </userContext.Consumer>

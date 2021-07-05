@@ -1,27 +1,32 @@
-import React, { Component } from 'react';
-import './Head.css';
-import Nav from "../../components/Nav"
-import { userContext } from "../../../src/context/userContext"
+import React, { Component } from "react";
+import "./Head.scss";
+import loginImage from "../../img/login.png";
+import unLogged from "../../img/unlogged.png";
+import Nav from "../../components/Nav";
+
+ 
+
+import { userContext } from "../../../src/context/userContext";
 class Head extends Component {
- 
-
   render() {
- 
     return (
-      <div><h1>Este es el Header probando</h1>
-         <Nav/>
-
-
-<userContext.Consumer>
-{({user,logoutUser}) => 
-    <>
-      <p>User: {user.name}</p>
-      <button onClick={logoutUser}>Logout</button>
-    </>
-}
-</userContext.Consumer>
-
-
+      <div className="Head">
+        <Nav />
+        <userContext.Consumer>
+          {({ user, logoutUser }) =>
+            user.name ? (
+              <>
+                <img className="loginAvatar" src={loginImage}></img>
+                <p> {user.name}</p>
+                <button id="logout" onClick={logoutUser}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <img id="avatar" src={unLogged}></img>
+            )
+          }
+        </userContext.Consumer>
       </div>
     );
   }

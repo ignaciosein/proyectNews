@@ -1,0 +1,21 @@
+ 
+@import "../../Sass/mixins";
+@import "../../Sass/_animations";
+.Home {
+    align-items: center;
+    @include slide-down();
+ 
+  >form{
+
+    padding: 20%;
+  }
+  > button{
+    @include flex-column-center();
+ 
+  }
+
+
+
+     @keyframes slide-bottom{0%{transform:translateY(-100px)}100%{transform:translateY(0px)}}
+    /* propertys here */
+}

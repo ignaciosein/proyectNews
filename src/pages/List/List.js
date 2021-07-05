@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./List.css";
-import data from "../../data.json";
+import "./List.scss";
+ 
 import ListNews from "../../components/ListNews/ListNews";
 
 class List extends Component {
@@ -12,6 +12,7 @@ class List extends Component {
   }
 
   componentDidMount() {
+ 
     const { data } = this.props.location;
 
     this.setState({ datos: data });
@@ -21,9 +22,7 @@ class List extends Component {
     const { data } = this.props.location;
 
     return (
-      <div>
-        <h1>PAGINA LIST</h1>
-
+      <div className="List">
         <ListNews titulo={data} />
       </div>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.css";
+import "./Card.scss";
 
 export default class Card extends React.Component {
   constructor(props) {
@@ -15,11 +15,12 @@ export default class Card extends React.Component {
  
  
     return (
-      <section>
-        <p>Titulo: {this.props.titulos} €</p>
+      <section className="Card">
+        <h1> {this.props.titulos} </h1>
         <p>Autor: {this.props.autor} </p>
         <p>{this.props.contenido} </p>
-       <img src={this.props.cover} alt="image"></img>  
+       <img src={this.props.cover} ></img>  
+       <br></br>
   
         <button onClick={this.props.remove}>Borrar</button>
       </section>
